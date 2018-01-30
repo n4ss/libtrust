@@ -152,8 +152,8 @@ func NewCertAuthTLSConfig(caPath, certPath, keyPath string) (*tls.Config, error)
 func newTLSConfig() *tls.Config {
 	return &tls.Config{
 		NextProtos: []string{"http/1.1"},
-		// Avoid fallback on insecure SSL protocols
-		MinVersion: tls.VersionTLS10,
+		// Avoid fallback on insecure SSL and TLS protocols (< 1.2)
+		MinVersion: tls.VersionTLS12,
 	}
 }
 
